@@ -1,0 +1,49 @@
+===========================================
+Tekton Pipeline Run Logs - pipelinerun.txt
+PipelineRun Name: sample-pipeline-run
+Namespace: cicd-namespace
+Start Time: 2025-02-19T10:00:00Z
+Completion Time: 2025-02-19T10:15:42Z
+Status: Succeeded
+===========================================
+
+[clone-repo : clone]
+2025-02-19T10:00:05Z Cloning repository https://github.com/pixelmike1/capstone-devops-project
+2025-02-19T10:00:07Z Cloning into 'devops'...
+2025-02-19T10:00:10Z Successfully cloned repository.
+2025-02-19T10:00:11Z Checking out branch 'main'
+2025-02-19T10:00:12Z Branch checked out successfully.
+
+[build : build-app]
+2025-02-19T10:01:00Z Building Docker image...
+2025-02-19T10:01:05Z Dockerfile detected at ./Dockerfile
+2025-02-19T10:01:20Z Step 1/6: FROM python:3.9-slim
+2025-02-19T10:01:25Z Step 2/6: COPY . /app
+2025-02-19T10:01:30Z Step 3/6: RUN pip install -r requirements.txt
+2025-02-19T10:02:10Z Dependencies installed successfully.
+2025-02-19T10:02:20Z Step 4/6: RUN pytest
+2025-02-19T10:03:00Z All tests passed (10 tests).
+2025-02-19T10:03:10Z Step 5/6: EXPOSE 8080
+2025-02-19T10:03:15Z Step 6/6: CMD ["python", "app.py"]
+2025-02-19T10:03:20Z Successfully built image: example/project:latest
+
+[test : run-tests]
+2025-02-19T10:04:00Z Starting integration tests...
+2025-02-19T10:04:15Z Test case 'test_login' passed.
+2025-02-19T10:04:25Z Test case 'test_user_creation' passed.
+2025-02-19T10:04:35Z Test case 'test_data_fetch' passed.
+2025-02-19T10:04:45Z All integration tests completed successfully.
+
+[deploy : deploy-to-dev]
+2025-02-19T10:05:00Z Deploying to development environment...
+2025-02-19T10:05:20Z Kubernetes deployment manifest applied.
+2025-02-19T10:05:40Z Deployment rollout status: SUCCESS
+
+[cleanup : clean-temp-files]
+2025-02-19T10:10:00Z Cleaning up temporary files and workspace.
+2025-02-19T10:10:10Z Workspace cleaned successfully.
+
+===========================================
+PipelineRun completed successfully.
+Total Duration: 00:15:42
+===========================================
